@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack Pro - Fitness Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Left Sidebar -->
+        <aside class="sidebar-left">
+            <div class="sidebar-content">
+                <nav class="sidebar-nav">
+                    <a href="#" class="nav-item active" data-page="wellness" title="Daily Wellness" onclick="window.switchPage('wellness'); return false;">
+                        <span class="icon">🏠</span>
+                    </a>
+                    <a href="#" class="nav-item" data-page="activity" title="Activity Log" onclick="window.switchPage('activity'); return false;">
+                        <span class="icon">📊</span>
+                    </a>
+                    <a href="#" class="nav-item" data-page="meals" title="Meal Planner" onclick="window.switchPage('meals'); return false;">
+                        <span class="icon">🍽️</span>
+                    </a>
+                    <a href="#" class="nav-item" data-page="insights" title="Insights" onclick="window.switchPage('insights'); return false;">
+                        <span class="icon">📈</span>
+                    </a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Container -->
+        <main class="main-container">
+            <!-- Top Bar -->
+            <div class="top-bar">
+                <div class="header-section">
+                    <h2 class="section-label">FitTrack Pro</h2>
+                    <h1 class="page-title" id="pageTitle">Daily Wellness</h1>
+                </div>
+                <div class="top-bar-right">
+                    <div class="live-clock" id="liveClock">
+                        <div class="clock-time">00:00</div>
+                        <div class="clock-date">Loading...</div>
+                    </div>
+                    <div class="user-profile">
+                        <div class="profile-avatar">👤</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pages Container -->
+            <div class="pages-container">
+                <!-- Page 1: Daily Wellness Overview -->
+                <div class="page active" id="wellness-page">
+                    <div class="content-grid">
+                        <!-- Left Section -->
+                        <div class="content-left">
+                            <!-- Overview Card -->
+                            <div class="overview-card">
+                                <div class="card-header">
+                                    <h3>Overview</h3>
+                                    <button class="dropdown-btn">Monthly <span>▼</span></button>
+                                </div>
+                                
+                                <div class="chart-area">
+                                    <div class="step-circle">
+                                        <span class="step-value">9.178</span>
+                                        <span class="step-label">Steps</span>
+                                    </div>
+                                    <svg class="wave-chart" viewBox="0 0 600 200">
+                                        <defs>
+                                            <linearGradient id="waveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                                <stop offset="0%" style="stop-color:#f5e6d3;stop-opacity:0.5" />
+                                                <stop offset="100%" style="stop-color:#f5e6d3;stop-opacity:0.1" />
+                                            </linearGradient>
+                                        </defs>
+                                        <path d="M 0,100 Q 75,50 150,100 T 300,100 T 450,100 T 600,100" stroke="#f5e6d3" stroke-width="3" fill="none"/>
+                                        <path d="M 0,100 Q 75,50 150,100 T 300,100 T 450,100 T 600,100 L 600,200 L 0,200 Z" fill="url(#waveGradient)"/>
+                                    </svg>
+                                    <div class="month-labels">
+                                        <span>Jan</span><span>Feb</span><span>Mar</span><span class="current">Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span>
+                                    </div>
+                                </div>
+
+                                <div class="stats-row">
+                                    <div class="stat">
+                                        <span class="stat-label">Total Time</span>
+                                        <span class="stat-value">748 Hr</span>
+                                        <span class="stat-period">April</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-label">Total Steps</span>
+                                        <span class="stat-value">9.178 St</span>
+                                        <span class="stat-period">April</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-label">Target</span>
+                                        <span class="stat-value">9.200 St</span>
+                                        <span class="stat-period">April</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Activity Cards -->
+                            <div class="activity-cards">
+                                <div class="activity-card bicycle">
+                                    <div class="activity-icon">🚴</div>
+                                    <h4>Bicycle Drill</h4>
+                                    <p class="activity-detail">36 km / weeks</p>
+                                    <div class="progress-section">
+                                        <span class="label">Progress</span>
+                                        <span class="percent">45%</span>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 45%"></div>
+                                        </div>
+                                        <div class="progress-info">
+                                            <span>17 / 36km</span><span class="days-left">2 days left</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="activity-card jogging">
+                                    <div class="activity-icon">🏃</div>
+                                    <h4>Jogging Hero</h4>
+                                    <p class="activity-detail">12 km / month</p>
+                                    <div class="progress-section">
+                                        <span class="label">Progress</span>
+                                        <span class="percent">13%</span>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 13%"></div>
+                                        </div>
+                                        <div class="progress-info">
+                                            <span>2 / 12km</span><span class="days-left">17 days left</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="activity-card healthy">
+                                    <div class="activity-icon">👟</div>
+                                    <h4>Healthy Busy</h4>
+                                    <p class="activity-detail">3600 steps / weeks</p>
+                                    <div class="progress-section">
+                                        <span class="label">Progress</span>
+                                        <span class="percent">90%</span>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 90%"></div>
+                                        </div>
+                                        <div class="progress-info">
+                                            <span>3200 / 3600 steps</span><span class="days-left">3 days left</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Friends Section in Left Column -->
+                            <div class="friends-section">
+                                <div class="section-header">
+                                    <h3>Friends</h3>
+                                    <a href="#" class="view-all">View All</a>
+                                </div>
+                                
+                                <div class="friends-tabs">
+                                    <button class="tab active">Activities</button>
+                                    <button class="tab">Online</button>
+                                </div>
+
+                                <div class="friends-list">
+                                    <div class="friend-item">
+                                        <div class="friend-avatar">👤</div>
+                                        <div class="friend-info">
+                                            <div class="friend-name">Max Stone</div>
+                                            <div class="friend-activity">Weekly Bicycle</div>
+                                            <div class="friend-time">10 min ago</div>
+                                        </div>
+                                        <button class="action-btn">💬</button>
+                                    </div>
+                                    <div class="friend-item">
+                                        <div class="friend-avatar">👤</div>
+                                        <div class="friend-info">
+                                            <div class="friend-name">Grisha Jack</div>
+                                            <div class="friend-activity">Slow Jogging</div>
+                                            <div class="friend-time">22 min ago</div>
+                                        </div>
+                                        <button class="action-btn">💬</button>
+                                    </div>
+                                    <div class="friend-item">
+                                        <div class="friend-avatar">👤</div>
+                                        <div class="friend-info">
+                                            <div class="friend-name">Levi Patrick</div>
+                                            <div class="friend-activity">Morning Swim</div>
+                                            <div class="friend-time">32 min ago</div>
+                                        </div>
+                                        <button class="action-btn">💬</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Middle and Right Combined Section -->
+                        <div class="content-right-wrapper">
+                            <div class="daily-jogging-card">
+                                <div class="jogging-header">
+                                    <div class="jogging-icon-wrapper">
+                                        <div class="jogging-icon">🏃</div>
+                                    </div>
+                                    <div class="jogging-title-section">
+                                        <h3>Daily Jogging</h3>
+                                        <p class="jogging-subtitle">Track your running activity</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="jogging-stats">
+                                    <div class="stat-box">
+                                        <span class="stat-icon">⏱️</span>
+                                        <div class="stat-content">
+                                            <span class="stat-value">6.2</span>
+                                            <span class="stat-label">Hours</span>
+                                        </div>
+                                    </div>
+                                    <div class="stat-box">
+                                        <span class="stat-icon">🔥</span>
+                                        <div class="stat-content">
+                                            <span class="stat-value">475</span>
+                                            <span class="stat-label">Calories</span>
+                                        </div>
+                                    </div>
+                                    <div class="stat-box">
+                                        <span class="stat-icon">📍</span>
+                                        <div class="stat-content">
+                                            <span class="stat-value">21</span>
+                                            <span class="stat-label">Distance km</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="jogging-progress">
+                                    <div class="progress-header">
+                                        <span class="progress-label">This Month</span>
+                                        <span class="progress-percentage">78%</span>
+                                    </div>
+                                    <div class="progress-track">
+                                        <div class="progress-bar-fill" style="width: 78%"></div>
+                                    </div>
+                                    <p class="progress-info">You've completed 23 of 30 days</p>
+                                </div>
+                                
+                                <button class="start-workout-btn">
+                                    <span class="btn-icon">▶</span>
+                                    <span>Start Workout</span>
+                                </button>
+                            </div>
+
+                            <!-- Water Intake Card -->
+                            <div class="water-intake-card">
+                                <div class="water-header">
+                                    <h4>💧 Water Intake</h4>
+                                    <p class="water-goal">Goal: 3000ml</p>
+                                </div>
+                                
+                                <div class="water-glass-container">
+                                    <div class="water-glass">
+                                        <div class="water-fill" id="waterFill">
+                                            <div class="water-wave"></div>
+                                        </div>
+                                        <div class="glass-markings">
+                                            <span class="marking">3000ml</span>
+                                            <span class="marking">2250ml</span>
+                                            <span class="marking">1500ml</span>
+                                            <span class="marking">750ml</span>
+                                            <span class="marking">0ml</span>
+                                        </div>
+                                    </div>
+                                    <div class="water-amount-display">
+                                        <span class="water-amount-large" id="waterAmount">1500</span>
+                                        <span class="water-unit">ml</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="water-controls">
+                                    <button class="water-btn water-btn-minus" id="waterDecrement">
+                                        <span>−</span>
+                                        <span class="btn-label">250ml</span>
+                                    </button>
+                                    <button class="water-btn water-btn-plus" id="waterIncrement">
+                                        <span>+</span>
+                                        <span class="btn-label">250ml</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Map Section -->
+                            <aside class="sidebar-right">
+                            <div class="map-section">
+                                <div class="section-header">
+                                    <h3>Live map</h3>
+                                    <a href="#" class="view-all">View</a>
+                                </div>
+                                <div class="map-container">
+                                    <div class="map-placeholder">
+                                        <div class="map-pin">📍</div>
+                                    </div>
+                                </div>
+                            </div>
+                            </aside>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Page 2: Activity Log -->
+                <div class="page" id="activity-page">
+                    <div class="content-grid">
+                        <div class="content-left">
+                            <div class="card activity-log-card">
+                                <div class="card-header">
+                                    <h3>Activity Log</h3>
+                                    <div class="activity-filters">
+                                        <button class="filter-btn active" data-filter="all">All</button>
+                                        <button class="filter-btn" data-filter="morning">Morning</button>
+                                        <button class="filter-btn" data-filter="afternoon">Afternoon</button>
+                                        <button class="filter-btn" data-filter="evening">Evening</button>
+                                    </div>
+                                </div>
+                                <div id="activityLog" class="activity-log-container">
+                                    <!-- Activity items will be inserted here by JavaScript -->
+                                </div>
+                                <button id="addActivityBtn" class="add-activity-btn">+ Add Activity</button>
+                            </div>
+                        </div>
+
+                        <!-- Right Column - Stats -->
+                        <div class="content-right">
+                            <div class="card calories-card">
+                                <div class="card-header">
+                                    <h3>Today's Burn</h3>
+                                </div>
+                                <div class="calories-content">
+                                    <div class="circular-progress">
+                                        <svg class="progress-ring" width="200" height="200">
+                                            <defs>
+                                            <linearGradient id="circularGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                    <stop offset="0%" style="stop-color:#d4c5a9;stop-opacity:1" />
+                                                    <stop offset="100%" style="stop-color:#c9b896;stop-opacity:1" />
+                                                </linearGradient>
+                                            </defs>
+                                            <circle class="progress-ring-bg" cx="100" cy="100" r="85" />
+                                            <circle class="progress-ring-circle" cx="100" cy="100" r="85" id="caloriesProgress" />
+                                        </svg>
+                                        <div class="progress-center">
+                                            <div class="flame-icon">🔥</div>
+                                            <div class="calories-value" id="totalCalories">0</div>
+                                            <div class="calories-label">calories</div>
+                                        </div>
+                                    </div>
+                                    <div class="calories-details">
+                                        <div class="detail-item">
+                                            <span class="detail-label">Goal</span>
+                                            <span class="detail-value" id="calorieGoal">2000</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Remaining</span>
+                                            <span class="detail-value" id="calorieRemaining">2000</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Activities</span>
+                                            <span class="detail-value" id="activityCount">0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Page 3: Meal Planner -->
+                <div class="page" id="meals-page">
+                    <div class="content-grid meals-grid">
+                        <div class="content-left">
+                            <!-- Breakfast Card -->
+                            <div class="meal-card breakfast-card">
+                                <div class="meal-card-header">
+                                    <div class="meal-icon-wrapper">
+                                        <span class="meal-icon">🌅</span>
+                                    </div>
+                                    <div class="meal-header-info">
+                                        <h3>Breakfast</h3>
+                                        <p class="meal-time">6:00 AM - 10:00 AM</p>
+                                    </div>
+                                    <div class="meal-calories" id="breakfastCalories">0 cal</div>
+                                </div>
+                                <div class="meals-list" id="breakfastList">
+                                    <!-- Meals will be inserted here -->
+                                </div>
+                                <button class="add-meal-btn" data-meal="breakfast">
+                                    <span>+</span> Add Item
+                                </button>
+                            </div>
+
+                            <!-- Lunch Card -->
+                            <div class="meal-card lunch-card">
+                                <div class="meal-card-header">
+                                    <div class="meal-icon-wrapper">
+                                        <span class="meal-icon">☀️</span>
+                                    </div>
+                                    <div class="meal-header-info">
+                                        <h3>Lunch</h3>
+                                        <p class="meal-time">12:00 PM - 2:00 PM</p>
+                                    </div>
+                                    <div class="meal-calories" id="lunchCalories">0 cal</div>
+                                </div>
+                                <div class="meals-list" id="lunchList">
+                                    <!-- Meals will be inserted here -->
+                                </div>
+                                <button class="add-meal-btn" data-meal="lunch">
+                                    <span>+</span> Add Item
+                                </button>
+                            </div>
+
+                            <!-- Dinner Card -->
+                            <div class="meal-card dinner-card">
+                                <div class="meal-card-header">
+                                    <div class="meal-icon-wrapper">
+                                        <span class="meal-icon">🌙</span>
+                                    </div>
+                                    <div class="meal-header-info">
+                                        <h3>Dinner</h3>
+                                        <p class="meal-time">6:00 PM - 9:00 PM</p>
+                                    </div>
+                                    <div class="meal-calories" id="dinnerCalories">0 cal</div>
+                                </div>
+                                <div class="meals-list" id="dinnerList">
+                                    <!-- Meals will be inserted here -->
+                                </div>
+                                <button class="add-meal-btn" data-meal="dinner">
+                                    <span>+</span> Add Item
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Right Column - Daily Summary -->
+                        <div class="content-right">
+                            <div class="card daily-nutrition-card">
+                                <div class="card-header">
+                                    <h3>Daily Nutrition</h3>
+                                </div>
+                                <div class="nutrition-summary">
+                                    <div class="total-calories-display">
+                                        <div class="calories-icon">🍽️</div>
+                                        <div class="calories-info">
+                                            <span class="calories-label">Total Intake</span>
+                                            <span class="calories-value" id="totalMealCalories">0</span>
+                                            <span class="calories-unit">kcal</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="nutrition-breakdown">
+                                        <div class="breakdown-item">
+                                            <div class="breakdown-header">
+                                                <span class="breakdown-label">Breakfast</span>
+                                                <span class="breakdown-value" id="breakfastPercent">0%</span>
+                                            </div>
+                                            <div class="progress-bar">
+                                                <div class="progress-fill breakfast-fill" id="breakfastBar" style="width: 0%"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="breakdown-item">
+                                            <div class="breakdown-header">
+                                                <span class="breakdown-label">Lunch</span>
+                                                <span class="breakdown-value" id="lunchPercent">0%</span>
+                                            </div>
+                                            <div class="progress-bar">
+                                                <div class="progress-fill lunch-fill" id="lunchBar" style="width: 0%"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="breakdown-item">
+                                            <div class="breakdown-header">
+                                                <span class="breakdown-label">Dinner</span>
+                                                <span class="breakdown-value" id="dinnerPercent">0%</span>
+                                            </div>
+                                            <div class="progress-bar">
+                                                <div class="progress-fill dinner-fill" id="dinnerBar" style="width: 0%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="nutrition-tips">
+                                        <h4>💡 Nutrition Tips</h4>
+                                        <ul>
+                                            <li>Aim for 25-30% calories at breakfast</li>
+                                            <li>Make lunch your largest meal (35-40%)</li>
+                                            <li>Keep dinner lighter (30-35%)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Page 4: Insights & Summary -->
+                <div class="page" id="insights-page">
+                    <div class="content-grid insights-grid">
+                        <!-- Weekly Activities Chart -->
+                        <div class="insights-card">
+                            <div class="insights-card-header">
+                                <div class="header-content">
+                                    <span class="chart-icon">📊</span>
+                                    <div>
+                                        <h3>Weekly Activities</h3>
+                                        <p class="chart-subtitle">Your workout frequency this week</p>
+                                    </div>
+                                </div>
+                                <div class="chart-legend">
+                                    <span class="legend-item">
+                                        <span class="legend-dot activity-dot"></span>
+                                        Activities
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="bar-chart" id="activitiesChart">
+                                <!-- Bars will be inserted here by JavaScript -->
+                            </div>
+                        </div>
+
+                        <!-- Weekly Calories Chart -->
+                        <div class="insights-card">
+                            <div class="insights-card-header">
+                                <div class="header-content">
+                                    <span class="chart-icon">🔥</span>
+                                    <div>
+                                        <h3>Weekly Calories Burned</h3>
+                                        <p class="chart-subtitle">Total calories burned each day</p>
+                                    </div>
+                                </div>
+                                <div class="chart-legend">
+                                    <span class="legend-item">
+                                        <span class="legend-dot calories-dot"></span>
+                                        Calories
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="bar-chart" id="caloriesChart">
+                                <!-- Bars will be inserted here by JavaScript -->
+                            </div>
+                        </div>
+
+                        <!-- Summary Stats Card -->
+                        <div class="insights-card stats-card">
+                            <div class="insights-card-header">
+                                <div class="header-content">
+                                    <span class="chart-icon">📈</span>
+                                    <div>
+                                        <h3>Weekly Summary</h3>
+                                        <p class="chart-subtitle">Your achievements this week</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <div class="stat-icon">🏃</div>
+                                    <div class="stat-info">
+                                        <span class="stat-value" id="totalActivities">0</span>
+                                        <span class="stat-label">Total Activities</span>
+                                    </div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-icon">🔥</div>
+                                    <div class="stat-info">
+                                        <span class="stat-value" id="totalCaloriesBurned">0</span>
+                                        <span class="stat-label">Calories Burned</span>
+                                    </div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-icon">⏱️</div>
+                                    <div class="stat-info">
+                                        <span class="stat-value" id="totalDuration">0</span>
+                                        <span class="stat-label">Minutes Active</span>
+                                    </div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-icon">📅</div>
+                                    <div class="stat-info">
+                                        <span class="stat-value" id="activeDays">0</span>
+                                        <span class="stat-label">Active Days</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons Card -->
+                        <div class="insights-card actions-card">
+                            <div class="insights-card-header">
+                                <div class="header-content">
+                                    <span class="chart-icon">⚙️</span>
+                                    <div>
+                                        <h3>Dashboard Actions</h3>
+                                        <p class="chart-subtitle">Manage your data</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="action-buttons-grid">
+                                <button class="action-btn download-btn" id="downloadBtn">
+                                    <span class="btn-icon">📥</span>
+                                    <span class="btn-content">
+                                        <span class="btn-title">Download Summary</span>
+                                        <span class="btn-desc">Export your weekly report</span>
+                                    </span>
+                                </button>
+                                <button class="action-btn reset-btn" id="resetBtn">
+                                    <span class="btn-icon">🔄</span>
+                                    <span class="btn-content">
+                                        <span class="btn-title">Reset Dashboard</span>
+                                        <span class="btn-desc">Clear all stored data</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Activity Modal -->
+    <div class="modal" id="activityModal">
+        <div class="modal-content">
+            <span class="modal-close" id="closeModal">&times;</span>
+            <h3>Add New Activity</h3>
+            <form id="activityForm">
+                <div class="form-group">
+                    <label for="activityName">Activity Name</label>
+                    <input type="text" id="activityName" required placeholder="e.g., Morning Run">
+                </div>
+                <div class="form-group">
+                    <label for="activityDuration">Duration (minutes)</label>
+                    <input type="number" id="activityDuration" required min="1" placeholder="e.g., 30">
+                </div>
+                <div class="form-group">
+                    <label for="activityCalories">Calories Burned</label>
+                    <input type="number" id="activityCalories" required min="1" placeholder="e.g., 300">
+                </div>
+                <div class="form-group">
+                    <label for="activityTime">Time of Day</label>
+                    <select id="activityTime" required>
+                        <option value="">Select time</option>
+                        <option value="morning">Morning</option>
+                        <option value="afternoon">Afternoon</option>
+                        <option value="evening">Evening</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary">Add Activity</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content success-modal">
+            <div class="success-icon">✓</div>
+            <h3>Activity Added Successfully!</h3>
+            <p>Your activity has been logged.</p>
+            <button class="btn-primary" id="closeSuccessModal">Done</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
